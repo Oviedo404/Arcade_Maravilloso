@@ -1,0 +1,91 @@
+:root{
+  padding-left: 200px;
+  padding-top: 100px;
+}
+.juego{
+  width:1000px;
+  height:700px;
+  background-color: rgb(13, 12, 12);
+  display:flex;
+  align-items: flex-end;
+  padding-left: 20px;
+}
+.contenedor{
+  width:1000px;
+  height:700px;
+  display:flex;
+}
+.borde{
+  left:500px;
+  width:722px;
+  height:542px;
+  display:flex;
+  align-items: center;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5px;
+  background-color: rgb(113, 113, 28);
+}
+
+.puntajes{
+  background-color: rgb(42, 120, 204);
+  height:100%;
+  width:350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hs{
+  width:80%;
+  height:20%;
+  background-color: rgb(23, 242, 137);
+}
+.puntaje{
+  width:80%;
+  height:20%;
+  background-color: rgb(27, 23, 242);
+}
+.vidas{
+  width:80%;
+  height:50%;
+  background-color: rgb(242, 23, 187);
+}
+.ronda{
+  width:80%;
+  height:10%;
+  background-color: rgb(23, 176, 242);
+}
+.tierra{
+  width:720px;
+  height: 540px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.taizo{
+  background-color: rgb(51, 152, 39);
+  width:30px;
+  height:30px;
+  box-shadow: inset 0 0 0 5px rgb(9, 10, 10);
+}
+
+.celda{
+  background-color: rgb(208, 208, 51);
+  width:30px;
+  height:30px;
+}
+
+.celdaDes{
+  background-color: rgb(11, 11, 11);
+  width:30px;
+  height:30px;
+}
+
+.bomba{
+  background-color: rgb(244, 15, 15);
+  width:30px;
+  height:30px;
+}
