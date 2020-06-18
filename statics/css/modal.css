@@ -1,0 +1,73 @@
+
+a{
+  background-color: rgb(64, 69, 135);
+  border-radius: 5px;
+  box-shadow: 0 5px 0 rgb(148, 142, 141);
+  color:rgb(128, 178, 199);
+  font-size: 20px;
+  padding: 20px;
+  position: absolute;
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+a:hover{
+  background-color: rgb(32, 41, 103);
+  box-shadow: 0 4px 0 rgb(28, 27, 27);
+  margin-top: 6px;
+  transition: all 0.4s ease;
+}
+h2{
+  text-align: center;
+}
+
+li{
+  list-style-image: url(../img/nave.png);
+  padding:5%;
+}
+.contenido{
+  background: rgb(130, 217, 128);
+  border-radius:5px;
+  position: relative;
+  padding: 5px 20px 13px 20px;
+  transition: all 500ms ease-in;
+  width: 400px;
+}
+.deslizar {
+  margin: 0 auto;
+}
+.modalCre {
+  background: rgba(196, 172, 255, 0.8);
+  bottom: 0;
+  left: 0;
+  opacity:0;
+  pointer-events: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: opacity 0.4s ease-in;
+  z-index: 99999;
+}
+.modalCre:target {
+  opacity:1;
+  pointer-events: auto;
+}
+.modalCre:target .deslizar{
+  margin:10% auto;
+}
+.tache {
+  background: rgb(217, 36, 36);
+  border-radius:100%;
+  color: rgb(255, 255, 255);
+  font-size:12px;
+  font-size-adjust: auto;
+  font-weight: bold;
+  height: 10px;
+  margin:5px;
+  position: absolute;
+  right: 5px;
+  top: 2px;
+  width: 10px;
+}
+.tache:hover {
+  background: rgb(138, 25, 25);
+}
