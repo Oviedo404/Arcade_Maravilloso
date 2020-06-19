@@ -1,9 +1,9 @@
-#ARCADE_MARAVILLOSO
+# ARCADE_MARAVILLOSO
 
 _El proyecto se enfoca en crear un centro de arcade con uso de JavaScript, CSS y Canvas, para pasar el rato y liberarse de estos
 tiempos difíciles que se están viviendo_
 
-##Recomendaciones
+## Recomendaciones
 
 *Antes de comenzar la instalación, por favor asegúrese de tener espacio disponible en su dispositivo, una buena conexión Wi-Fi para evitar problemas durante el proceso y que su navegador por defecto sea Google Chrome.*
 
@@ -11,13 +11,13 @@ tiempos difíciles que se están viviendo_
 
 *Por último, sugerimos que su editor de texto sea Atom.*
 
-###Instalación
+### Instalación
 
 *1.-Dirigirse al repositorio de GitHub para descargar los archivos necesarios para el funcionamiento de la página [https://github.com/Oviedo404/Arcade_Maravilloso]*
 
 *2.-Intalarlos dentro de Xampp*
 
-###EQUIPO MARAVILLA
+### EQUIPO MARAVILLA
 * **Damian Magaña Raúl de Jesús** - *Buscaminas, Diseño de la página y menú de inicio* - [NaimadGam](https://github.com/NaimadGam)
 
 * **Ramos Maldonado David Alexander** - *Space Invaders, Diseño de la página* - [Alexander-Chef](https://github.com/Alexander-Chef)
