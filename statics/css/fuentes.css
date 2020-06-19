@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "BSans_bold";
+  src:url("../../lib/fuentes/BalsamiqSans-Bold.ttf");
+}
+@font-face{
+  font-family: "2P";
+  src: url("../../lib/fuentes/PressStart2P-Regular.ttf");
+}

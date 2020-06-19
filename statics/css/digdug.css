@@ -1,0 +1,208 @@
+@import "fuentes.css";
+
+
+body{
+  background-image:
+  linear-gradient(217deg, black, rgba(255,0,0,0) 70.71%),
+  linear-gradient(127deg, white, rgba(0,255,0,0) 70.71%),
+  linear-gradient(336deg, gray, rgba(0,0,255,0) 70.71%);
+  height: 120vh;
+  justify-content: center;
+  width: 100vw;
+}
+button{
+  height: 50px;
+  margin: 20%;
+  position: absolute;
+  width:80px;
+}
+.bomba{
+  background-color: rgb(0, 0, 0);
+  background-image: url(../img/bomba.png);
+  height:30px;
+  width:30px;
+}
+.borde{
+  align-items: center;
+  background-color: rgb(113, 113, 28);
+  display:flex;
+  left:500px;
+  height:542px;
+  padding-bottom: 5px;
+  padding-left: 8px;
+  padding-right: 5px;
+  padding-top: 5px;
+  width:722px;
+}
+.botones{
+  background-color: rgb(141, 158, 138);
+  background-image: url(../img/fondo.png);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height:700px;
+  justify-content: space-between;
+  left: 0;
+  position: relative;
+  width:10%;
+}
+.celda{
+  background-color: rgb(208, 208, 51);
+  background-image: url(../img/tierra.jpg);
+  width:30px;
+  height:30px;
+}
+.celdaDes{
+  background-color: rgb(11, 11, 11);
+  width:30px;
+  height:30px;
+}
+.final{
+  background-color: rgb(16, 215, 165);
+  top:100px;
+}
+.hs{
+  background-color: rgb(0, 0, 0);
+  height:20%;
+  width:80%;
+}
+.juego{
+  align-items: flex-end;
+  background-color: rgb(0, 0, 0);
+  display:flex;
+  height:700px;
+  position: relative;
+  padding-left: 20px;
+  width:80%;
+}
+#menu{
+  background-color: rgb(16, 215, 165);
+  top:200px;
+}
+.imagen{
+  align-items: flex-end;
+  background-color: rgb(237, 19, 19);
+  display:flex;
+  height:700px;
+  position: relative;
+  width:10%;
+}
+.piedra{
+  background-color: rgb(98, 68, 43);
+  background-image: url(../img/piedra.jpg);
+  width:30px;
+  height:30px;
+}
+.puntaje{
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  height:20%;
+  font-family: "2P";
+  font-size: 15px;
+  width:80%;
+}
+.puntajes{
+  align-items: center;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height:100%;
+  width:400px;
+}
+.pooka{
+  background-color: rgb(236, 18, 221);
+  height:30px;
+  width:30px;
+}
+.pookaInf{
+  background-color: rgb(236, 96, 18);
+  height:30px;
+  width:30px;
+}
+.pookaMor{
+  background-color: rgb(68, 84, 64);
+  height:30px;
+  width:30px;
+}
+.pookaPar{
+  background-color: rgb(48, 18, 236);
+  height:30px;
+  width:30px;
+}
+.ronda{
+  background-color: rgb(0, 0, 0);
+  color: rgb(254, 254, 254);
+  font-family: "2P";
+  font-size: 15px;
+  height:10%;
+  width:80%;
+}
+.taizoaba{
+  background-color: rgb(0, 0, 0);
+  background-image: url(../img/karelaba.png);
+  height:30px;
+  width:30px;
+}
+.taizoarr{
+  background-color: rgb(0, 0, 0);
+  background-image: url(../img/karelarr.png);
+  height:30px;
+  width:30px;
+}
+.taizoder{
+  background-color: rgb(0, 0, 0);
+  background-image: url(../img/karel.png);
+  height:30px;
+  width:30px;
+}
+.taizoizq{
+  background-color: rgb(0, 0, 0);
+  background-image: url(../img/karelizq.png);
+  height:30px;
+  width:30px;
+}
+.taizoM{
+  background-color: rgb(255, 255, 255);
+  box-shadow: inset 0 0 0 5px rgb(9, 10, 10);
+  height:30px;
+  width:30px;
+}
+.tierra{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-family: "2P";
+  font-size: 30px;
+  height: 540px;
+  width:720px;
+}
+.titKarel{
+  color: rgb(48, 27, 222);
+}
+.vidas{
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  height:50%;
+  font-size: 15px;
+  font-family: "2P";
+  width:80%;
+}
+#contenedor{
+  background-color: rgb(157, 17, 207);
+  border-radius: 5px;
+  display:flex;
+  height:720px;
+  justify-content: center;
+  left: 200px;
+  position: absolute;
+  padding-right: 30px;
+  padding-top: 15px;
+  width: 70%;
+}
+#nombre{
+  font-family: "2P";
+  font-size: 60px;
+  left:10px;
+  text-align: center;
+}

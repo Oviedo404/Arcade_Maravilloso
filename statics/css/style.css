@@ -1,0 +1,44 @@
+html,body{
+  margin:0px;
+  height:100%;
+}
+body{
+  align-content: center;
+  background:
+  linear-gradient(217deg, black, rgba(255,0,0,0) 70.71%),
+  linear-gradient(127deg, white, rgba(0,255,0,0) 70.71%),
+  linear-gradient(336deg, gray, rgba(0,0,255,0) 70.71%);
+  background-color: black;
+  background-size: 100% 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0px;
+  font-family: 'Bungee Inline', cursive;
+  font-size: 30px;
+}
+#titulo{
+  display: flex;
+  height: 10%;
+  justify-content: center;
+  margin-top: 3%;
+  width: 100%;
+}
+#nombre{
+  font-family: 'Monofett', cursive;
+  font-size: 130px;
+  text-align: center;
+  width: 90%;
+  margin-top: 0%;
+}
+#cuerpo{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-around;
+  height: 100%;
+  width: 100%;
+}
+#iniciar{
+  height: 50%;
+}

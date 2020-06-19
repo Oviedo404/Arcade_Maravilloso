@@ -1,0 +1,79 @@
+html,body{
+  margin:0px;
+  height:100%;
+}
+body{
+	width:700px;
+	margin:0 auto;
+	background-image: radial-gradient(circle farthest-side at 500px 2700px, blue, black);
+  font-family: 'Bungee Inline', cursive;
+  font-size: 30px;
+}
+h1{
+	text-align:center;
+	color: #FFFFFF;
+  font-family: 'Monofett', cursive;
+  margin-top: 0%;
+  margin-bottom: 3%;
+  width: 70%;
+}
+#Tablero{
+	background-color: #000000;
+	border: 0.5em double deepskyblue;
+}
+#titulo{
+  display: flex;
+  height: 10%;
+  justify-content: center;
+  margin-top: 0%;
+  margin-bottom: 3%;
+  width: 100%;
+}
+#user{
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 30%;
+  padding-top: 0%;
+  position: relative;
+  top: 30px;
+}
+#salida{
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 30%;
+  position: relative;
+  top: 30px;
+}
+#button{
+  background-color:rgba(0, 0, 0, 0.76);
+  border-radius: 1em;
+  color: white;
+  height: 100%;
+  outline: none;
+  width: 100#tablero%;
+  font-family: 'Bungee Inline', cursive;
+  font-size: 30px;
+  padding-top: 0%;
+}
+#usuario{
+  background-color:rgba(0, 0, 0, 0.76);
+  border-radius: 1em;
+  color: white;
+  margin: 0px;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  border: inset white 3px;
+}
+#nickname{
+  position: relative;
+  margin-top: 0%;
+  margin-bottom: 0%;
+  top: -17%;
+  font-size: 30px;
+}
+#Tablero{
+  margin-top: 10%;
+}

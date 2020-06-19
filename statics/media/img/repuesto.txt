@@ -1,0 +1,416 @@
+function expandir(abajo, atras, arriba, enfrente, centro, central, casillas, tamano){
+    for (let d = abajo; d <= arriba; d++) {
+      for (let c = atras; c <= enfrente; c++) {
+        let cuadro = d + "" + c;
+        let cuadrado = document.getElementById(cuadro);
+        if (cuadrado.textContent == "") {
+          if (casillas[d][c] == 0) {
+            if (d == centro && c == central) {
+              cuadrado.textContent = "";
+              cuadrado.style.backgroundImage = "url(../statics/media/img/pastoquemado.jpg)";
+            }
+            else if (cuadrado.style.backgroundImage != "url(../statics/media/img/pastoquemado.jpg)") {
+              //
+              descubrir(d, c, casillas, tamano);
+            }
+          }
+          else if (casillas[d][c] != "bomba"){
+            document.getElementById(cuadro).innerHTML = "<p style='margin-top: 15px;'>" + casillas[d][c] + "</p>";
+            cuadrado.style.backgroundImage = "url(../statics/media/img/pastoquemado.jpg)";
+          }
+        }
+      }
+    }
+};
+
+function expandir(arriba, atras, abajo, enfrente, centro, central, casillas, tamano){
+    for (let d = arriba; d <= abajo; d++) {
+      for (let c = atras; c <= enfrente; c++) {
+        let cuadro = d + "" + c;
+        let cuadrado = document.getElementById(cuadro);
+        if (cuadrado.textContent == "") {
+          if (casillas[d][c] == 0) {
+            if (d == centro && c == central) {
+              cuadrado.textContent = "";
+              cuadrado.style.backgroundImage = "url(../statics/media/img/pastoquemado.jpg)";
+            }
+            else {
+              if (cuadrado.style.backgroundImage == "url(../statics/media/img/pastoquemado.jpg)") {
+                descubrir(d, c, casillas, tamano);
+              }
+            }
+          }
+          else if (casillas[d][c] != "bomba"){
+            cuadrado.style.backgroundImage = "url(../statics/media/img/pastoquemado.jpg)";
+            cuadrado.innerHTML = "<p>" + casillas[d][c] + "</p>";
+          }
+        }
+      }
+    }
+};
+function descubrir(va, wa, casillas, tamano){
+    if (va == 0 && wa == 0) {
+      expandir(va, wa, va + 1, wa + 1, va, wa, casillas, tamano);
+    }
+    else if (va == 0 && (wa > 0 && wa < tamano-1)) {
+      expandir(va, wa - 1, va + 1, wa + 1, va, wa, casillas, tamano);
+    }
+    else if (va == 0 && wa == tamano-1) {
+      expandir(va, wa - 1, va + 1, wa, va, wa, casillas, tamano);
+    }
+    else if (( va > 0 && va < tamano-1) && wa == tamano-1) {
+      expandir(va - 1, wa - 1, va + 1, wa, va, wa, casillas, tamano);
+    }
+    else if (va==tamano-1 && wa == tamano-1) {
+      expandir(va - 1, wa - 1, va, wa, va, wa, casillas, tamano);
+    }
+    else if (va==tamano-1 && (wa > 0 && wa < tamano-1)) {
+      expandir(va - 1, wa - 1, va, wa + 1, va, wa, casillas, tamano);
+    }
+    else if (va==tamano-1 && wa == 0 ) {
+      expandir(va - 1, wa, va, wa + 1, va, wa,casillas, tamano);
+    }
+    else if ((va > 0 && va < tamano-1) && wa==0 ) {
+      expandir(va - 1, wa, va + 1, wa + 1, va, wa, casillas, tamano);
+    }
+    else {
+      expandir(va - 1, wa - 1, va + 1, wa + 1, va, wa, casillas, tamano);
+    }
+}
+
+function numeritos(abajo, atras, arriba, enfrente, casillas){
+    for (let q = abajo; q <= arriba; q++) {
+      for (let o = atras; o <= enfrente; o++) {
+        if (casillas[q][o] != "bomba") {
+          casillas[q][o] = (parseInt(casillas[q][o]+1))
+        }
+      }
+    }
+}
+function adyacentes(casillas, tamano){
+    for (var v = 0; v < tamano; v++) {
+      for (var w = 0; w < tamano; w++) {
+        if (casillas[v][w] == "bomba") {
+          if ( v == 0 && w == 0) {
+            numeritos(v, w, v+1, w+1, casillas);
+          }
+          else if (v == 0 && (w > 0 && w < tamano-1)) {
+            numeritos(v, w - 1, v + 1, w + 1, casillas);
+          }
+          else if (v == 0 && w == tamano-1) {
+            numeritos(v, w - 1, v + 1, w, casillas);
+          }
+          else if (( v > 0 && v < tamano-1) && w == tamano-1 ) {
+            numeritos(v-1, w-1, v+1, w, casillas);
+          }
+          else if (v==tamano-1 && w == tamano-1) {
+            numeritos(v-1, w-1, v, w, casillas);
+          }
+          else if (v==tamano-1 && (w > 0 && w < tamano-1)) {
+            numeritos(v-1, w-1, v, w+1, casillas);
+          }
+          else if (v==tamano-1 && w == 0 ) {
+            numeritos(v-1, w, v, w+1, casillas);
+          }
+          else if ( w==0 && (v > 0 && v < tamano-1)) {
+            numeritos(v-1, w, v+1, w+1, casillas);
+          }
+          else {
+            numeritos(v-1, w -1, v+1, w+1, casillas);
+          }
+        }
+      }
+    }
+}
+
+var tamano = 4;
+var tablero = document.getElementById("tablero");
+var casillas=[];
+var random;
+for (var m = 0; m < tamano; m++) {
+    casillas[m]=[];
+    for (var n = 0; n < tamano; n++) {
+        casillas[m][n]=0;
+    }
+}
+for (let z = 0; z < 1; z++) {
+  do {
+     random = Math.floor(Math.random()*tamano);
+     random2 = Math.floor(Math.random()*tamano);
+  } while (casillas[random][random2]=="bomba");
+  casillas[random][random2] = "bomba";
+}
+adyacentes(casillas, tamano);
+
+for (let a = 0; a < tamano; a++) {
+  for (let b = 0; b < tamano; b++) {
+    let casilla = document.createElement("div");
+    casilla.classList.add("casilla");
+    casilla.setAttribute("id", a + "" + b);
+    casilla.addEventListener("click", ()=>{
+      let ids = casilla.id.split("");
+      let id1 = parseInt(ids[0],10);
+      let id2 = parseInt(ids[1],10);
+      let cuadro = ids[0] + ids [1];
+      let cuadrado = document.getElementById(cuadro)
+      if (casillas[id1][id2] == 0) {
+        cuadrado.style.backgroundImage = "url(../statics/media/img/pastoquemado.jpg)";
+        descubrir(id1, id2, casillas, tamano);
+      }
+      else if (casillas[id1][id2] != "bomba") {
+        cuadrado.style.backgroundImage = "url(../statics/media/img/pastoquemado.jpg)";
+        cuadrado.innerHTML = "<p>" + casillas[id1][id2] + "</p>";
+      }
+      else {
+        cuadrado.style.backgroundImage="url(../statics/media/img/mina.png)";
+        alert("End Game");
+      }
+    });
+    tablero.appendChild(casilla);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function expandir(abajo, atras, arriba, enfrente, centro, central, casillas, tamano){
+    for (let d = abajo; d <= arriba; d++) {
+      for (let c = atras; c <= enfrente; c++) {
+        let cuadro = d + "" + c;
+        let cuadrado = document.getElementById(cuadro);
+        let ter = document.getElementById("ter"+ d + "" + c);
+        console.log("ter"+ d + "" + c);
+        if (cuadrado.textContent == "") {
+          if (casillas[d][c] == 0) {
+            if (d == centro && c == central) {
+              //cambio de cuadrado si esta vacio y haces click
+              cuadrado.textContent = "";
+              cuadrado.style.backgroundColor = "white";
+              ter.style.backgroundImage = "url(../statics/media/img/pastoquemado.jpg)";
+            }
+            else if (cuadrado.style.backgroundColor != "white") {
+              descubrir(d, c, casillas, tamano);
+              ter.style.backgroundImage = "url(../statics/media/img/pastoquemado.jpg)";
+            }
+          }
+          else if (casillas[d][c] != "bomba"){
+            ter.innerHTML = "<p>" + casillas[d][c] + "</p>";
+            ter.style.backgroundImage = "url(../statics/media/img/pastoquemado.jpg)";
+            cuadrado.style.backgroundColor = "white";
+          }
+        }
+      }
+    }
+};
+
+function descubrir(va, wa, casillas, tamano){
+    if (va == 0 && wa == 0) {
+      expandir(va, wa, va + 1, wa + 1, va, wa, casillas, tamano);
+    }
+    else if (va == 0 && (wa > 0 && wa < tamano-1)) {
+      expandir(va, wa - 1, va + 1, wa + 1, va, wa, casillas, tamano);
+    }
+    else if (va == 0 && wa == tamano-1) {
+      expandir(va, wa - 1, va + 1, wa, va, wa, casillas, tamano);
+    }
+    else if (( va > 0 && va < tamano-1) && wa == tamano-1) {
+      expandir(va - 1, wa - 1, va + 1, wa, va, wa, casillas, tamano);
+    }
+    else if (va==tamano-1 && wa == tamano-1) {
+      expandir(va - 1, wa - 1, va, wa, va, wa, casillas, tamano);
+    }
+    else if (va==tamano-1 && (wa > 0 && wa < tamano-1)) {
+      expandir(va - 1, wa - 1, va, wa + 1, va, wa, casillas, tamano);
+    }
+    else if (va==tamano-1 && wa == 0 ) {
+      expandir(va - 1, wa, va, wa + 1, va, wa,casillas, tamano);
+    }
+    else if ((va > 0 && va < tamano-1) && wa==0 ) {
+      expandir(va - 1, wa, va + 1, wa + 1, va, wa, casillas, tamano);
+    }
+    else {
+      expandir(va - 1, wa - 1, va + 1, wa + 1, va, wa, casillas, tamano);
+    }
+}
+
+function numeritos(abajo, atras, arriba, enfrente, casillas){
+    for (let q = abajo; q <= arriba; q++) {
+      for (let o = atras; o <= enfrente; o++) {
+        if (casillas[q][o] != "bomba") {
+          casillas[q][o] = (parseInt(casillas[q][o]+1))
+        }
+      }
+    }
+}
+function adyacentes(casillas, tamano){
+    for (var v = 0; v < tamano; v++) {
+      for (var w = 0; w < tamano; w++) {
+        if (casillas[v][w] == "bomba") {
+          if ( v == 0 && w == 0) {
+            numeritos(v, w, v+1, w+1, casillas);
+          }
+          else if (v == 0 && (w > 0 && w < tamano-1)) {
+            numeritos(v, w - 1, v + 1, w + 1, casillas);
+          }
+          else if (v == 0 && w == tamano-1) {
+            numeritos(v, w - 1, v + 1, w, casillas);
+          }
+          else if (( v > 0 && v < tamano-1) && w == tamano-1 ) {
+            numeritos(v-1, w-1, v+1, w, casillas);
+          }
+          else if (v==tamano-1 && w == tamano-1) {
+            numeritos(v-1, w-1, v, w, casillas);
+          }
+          else if (v==tamano-1 && (w > 0 && w < tamano-1)) {
+            numeritos(v-1, w-1, v, w+1, casillas);
+          }
+          else if (v==tamano-1 && w == 0 ) {
+            numeritos(v-1, w, v, w+1, casillas);
+          }
+          else if ( w==0 && (v > 0 && v < tamano-1)) {
+            numeritos(v-1, w, v+1, w+1, casillas);
+          }
+          else {
+            numeritos(v-1, w -1, v+1, w+1, casillas);
+          }
+        }
+      }
+    }
+}
+
+var tamano = 4;
+var tablero = document.getElementById("tablero");
+var casillas=[];
+var random;
+for (var m = 0; m < tamano; m++) {
+    casillas[m]=[];
+    for (var n = 0; n < tamano; n++) {
+        casillas[m][n]=0;
+    }
+}
+for (let z = 0; z < 1; z++) {
+  do {
+     random = Math.floor(Math.random()*tamano);
+     random2 = Math.floor(Math.random()*tamano);
+  } while (casillas[random][random2]=="bomba");
+  casillas[random][random2] = "bomba";
+}
+adyacentes(casillas, tamano);
+
+for (let a = 0; a < tamano; a++) {
+  for (let b = 0; b < tamano; b++) {
+    let casilla = document.createElement("div");
+    casilla.classList.add("casilla");
+    let terreno = document.createElement("div");
+    terreno.style.backgroundImage = "url(../statics/media/img/pasto.jpg)";
+    terreno.classList.add("terreno");
+    terreno.setAttribute("id","ter" + a + "" + b);
+    casilla.appendChild(terreno);
+    casilla.setAttribute("id", a + "" + b);
+    casilla.addEventListener("click", ()=>{
+      let ids = casilla.id.split("");
+      let id1 = parseInt(ids[0],10);
+      let id2 = parseInt(ids[1],10);
+      let cuadro = ids[0] + ids [1];
+      let cuadrado = document.getElementById(cuadro)
+      if (casillas[id1][id2] == 0) {
+        cuadrado.style.backgroundColor = "white";
+        descubrir(id1, id2, casillas, tamano);
+        terreno.style.backgroundImage = "url(../statics/media/img/pastoquemado.jpg)";
+      }
+      else if (casillas[id1][id2] != "bomba") {
+        terreno.innerHTML = "<p>" + casillas[id1][id2] + "</p>";
+        terreno.style.backgroundImage = "url(../statics/media/img/pastoquemado.jpg)";
+        cuadrado.style.backgroundColor = "white";
+      }
+      else {
+        terreno.src="../statics/media/img/mina.png";
+        cuadrado.style.backgroundColor = "red";
+        alert("End Game");
+      }
+    });
+    tablero.appendChild(casilla);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+function expandir(arriba, atras, abajo, enfrente, centro, central, casillas, tamano){
+    for (let d = arriba; d <= abajo; d++) {
+      for (let c = atras; c <= enfrente; c++) {
+        let cuadro = d + "" + c;
+        let cuadrado = document.getElementById(cuadro);
+        if (cuadrado.textContent == "") {
+          if (casillas[d][c] == 0) {
+            if (d == centro && c == central) {
+              cuadrado.textContent = "";
+              cuadrado.style.backgroundImage = "url(../statics/media/img/pastoquemado.jpg)";
+            }
+            else if (cuadrado.style.backgroundImage != "url(../statics/media/img/pastoquemado.jpg)") {
+                descubrir(d, c, casillas, tamano);
+            }
+          }
+          else if (casillas[d][c] != "bomba"){
+            cuadrado.style.backgroundImage = "url(../statics/media/img/pastoquemado.jpg)";
+            cuadrado.innerHTML = "<p>" + casillas[d][c] + "</p>";
+          }
+        }
+      }
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+if (casillas[id1][id2] == 0) {
+  casilla.removeChild(terreno);
+  /*let terreno = document.createElement("div");
+  terreno.style.backgroundImage = "url(../statics/media/img/pastoquemado.jpg)";
+  terreno.classList.add("terreno");
+  casilla.appendChild(terreno);
+  cuadrado.style.backgroundColor = "white";*/
+  descubrir(id1, id2, casillas, tamano);
+}
+else if (casillas[id1][id2] != "bomba") {
+  casilla.removeChild(terreno);
+  /*let terreno = document.createElement("div");
+  terreno.style.backgroundImage = "url(../statics/media/img/pastoquemado.jpg)";
+  terreno.classList.add("terreno");
+  terreno.innerHTML = "<p>" + casillas[id1][id2] + "</p>";
+  casilla.appendChild(terreno);*/
+  cuadrado.style.backgroundColor = "white";
+}
