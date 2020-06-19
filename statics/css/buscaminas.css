@@ -1,3 +1,35 @@
+@keyframes gameover {
+  0% {
+    top: 0%;
+    bottom: 0%;
+    left: 0%;
+    right: 0%;
+  }
+  25%{
+    top: 7%;
+    bottom: 0%;
+    left: 7%;
+    right: 0%;
+  }
+  50%{
+    top: 0%;
+    bottom: 0%;
+    left: 0%;
+    right: 0%;
+  }
+  75%{
+    top: 0%;
+    bottom: 7%;
+    left: 0%;
+    right: 7%;
+  }
+  100% {
+    top: 0%;
+    bottom: 0%;
+    left: 0%;
+    right: 0%;
+  }
+}
 html,body{
   margin:0px;
   height:100%;
@@ -6,11 +38,12 @@ html,body{
 body{
   align-content: center;
   background:
-    linear-gradient(217deg, black, rgba(255,0,0,0) 70.71%),
-    linear-gradient(127deg, white, rgba(0,255,0,0) 70.71%),
-    linear-gradient(336deg, gray, rgba(0,0,255,0) 70.71%);
+    linear-gradient(217deg, #DCD737, rgba(255,0,0,0) 70.71%),
+    linear-gradient(127deg, #1DBD93, rgba(0,255,0,0) 70.71%),
+    linear-gradient(336deg, #93CD2B, rgba(0,0,255,0) 70.71%);
   background-color: black;
   background-size: 100% 100vh;
+  color: white;
   display: flex;
   flex-direction: column;
   font-family: 'Bungee Inline', cursive;
@@ -51,7 +84,7 @@ p{
 }
 .muestra{
   height: 70%;
-  border: inset white 3px;
+  border: inset 140 3px;
   border-radius: 1em;
   background-size: cover;
   width: 100%;
@@ -74,7 +107,7 @@ p{
   width: 100%;
 }
 #button{
-  background-color:rgba(0, 0, 0, 0.76);
+  background-color:rgba(239, 190, 140, 0.77);
   border-radius: 1em;
   color: white;
   font-family: 'Bungee Inline', cursive;
@@ -85,8 +118,8 @@ p{
   width: 70%;
 }
 #dificulty{
-  background-color:rgba(0, 0, 0, 0.76);
-  border: inset white 3px;
+  background-color:rgba(239, 190, 140, 0.77);
+  border: inset #EFBE8C 3px;
   border-radius: 1em;
   color: white;
   display: flex;
@@ -104,7 +137,8 @@ p{
   text-align: center;
 }
 #fin{
-  background-color:rgba(0, 0, 0, 0.76);
+  animation: gameover 3s linear 1s infinite;
+  background-color:rgba(239, 190, 140, 0.77);
   border-radius: 1em;
   display: flex;
   flex-direction: column;
@@ -115,6 +149,11 @@ p{
   margin-top: auto;
   padding-bottom: 3%;
   padding-top: 0%;
+  position: relative;
+  top: 0%;
+  bottom: 0%;
+  left: 0%;
+  right: 0%;
   width: 70%;
 }
 #info{
@@ -127,8 +166,8 @@ p{
   width: 50%;
 }
 #inst{
-  border: inset white 3px;
-  background-color:rgba(0, 0, 0, 0.76);
+  border: inset #EFBE8C 3px;
+  background-color:rgba(239, 190, 140, 0.77);
   border-radius: 1em;
   color: white;
   margin-left: auto;
@@ -176,9 +215,9 @@ p{
   width: 30%;
 }
 #score{
-  background-color:rgba(0, 0, 0, 0.76);
+  background-color:rgba(239, 190, 140, 0.77);
   border-radius: 1em;
-  border: inset white 3px;
+  border: inset #EFBE8C 3px;
   color: white;
   font-size: 30px;
   margin-bottom:7%;
@@ -220,8 +259,8 @@ p{
   width: 30%;
 }
 #usaurio{
-  border: inset white 3px;
-  background-color:rgba(0, 0, 0, 0.76);
+  border: inset #EFBE8C 3px;
+  background-color:rgba(239, 190, 140, 0.77);
   border-radius: 1em;
   color: white;
   height: 100%;

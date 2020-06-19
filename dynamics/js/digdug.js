@@ -80,8 +80,11 @@ let taizoHori= new taizo (taizoY, taizoX, 1, ind, ori);
 let c=0;
 //Construir tablero
 function tablero(){
-  for (let y = 0; y < y_length; y++) {
-    for (let x = 0; x < x_length; x++) {
+  console.log(taizoHori);
+  console.log(taizoX);
+  console.log(taizoY);
+  for (y = 0; y < y_length; y++) {
+    for (x = 0; x < x_length; x++) {
       if(x==taizoX){
         if(y<taizoY){
           estado[c]= new celda(y,x,2,c);
@@ -100,24 +103,6 @@ function tablero(){
     }
   }
 }
-function tablero2(){
-  for(indice in estado){
-    if(estado[indice].x==taizoX){
-      if(estado[indice].y<taizoY){
-        estado[indice].est=2;
-      }
-      if(estado[indice].y==taizoY){
-        estado[indice].est=1;
-      }
-      if(estado[indice].y>taizoY){
-        estado[indice].est=0;
-      }
-    }else if(estado[indice].x!=taizoX){
-      estado[indice].est=0;
-    }
-  }
-}
-
 
 
 //Crear tunel y celdas en el mundo
@@ -128,6 +113,7 @@ function creaTablero(){
       celdaD.classList.add("celdaDes");
     }
     if(estado[indice].est==1){
+      console.log("Taizo");
       celdaD.classList.add("taizoder");
     }
     if(estado[indice].est==0){
@@ -140,8 +126,8 @@ function creaTablero(){
 function nivelMod(niv ){
   let ene=0;
   if(niv==1){
-    ene=1;
-    tunelEnemigo(3);
+    ene=4;
+    tunelEnemigo(3 );
     crearEnemigo(ene,niv);
   }else if(niv==2 || niv==3){
     ene=5;
@@ -212,13 +198,16 @@ function crearEnemigo(num, niv){
   }
 }
 
-function movimientoPooka(pooka){
+function movimientoPooka(pooka,  ){
   const direcciones=[+1,-1,+width_2,-width_2];
   let direccion = direcciones[Math.floor(Math.random() * direcciones.length)];
+  //let aleatorio = 0;
   pooka.time = setInterval(()=>{
+  //  if(aleatorio<4){
       let ind=parseInt(pooka.ind);
       let indVerif=ind+direccion;
       if(indVerif>=0 && indVerif<=431 && estado[indVerif].est!=0 && estado[indVerif].est!=5  && estado[indVerif].est!=3  && pooka.est==1 && pooka.estInd==2){
+      //  console.log(estado[ind].ind);
         let estVi=estado[indVerif].est
         estado[ind].est=2;
         let xMP=estado[indVerif].x;
@@ -241,7 +230,7 @@ function movimientoPooka(pooka){
           celdaInPook.classList.add("pookaInf");
           celdaInPook.classList.remove("pooka");
           if(taizoHori.est==1){
-            if(puntaje<10){
+            if(puntaje<1500){
               celdaInPook.classList.add("pookaPar");
               celdaInPook.classList.remove("pookaInf");
               pooka.est=3;
@@ -286,7 +275,7 @@ function golpeEnemigo( ){ //Ayuda
   console.log(celdaM);
   celdaM.classList.add("taizoM");
   celdaM.classList.remove("pooka");
-  celdaM.classList.remove("taizo"+taizoHori.ori);
+  celdaM.classList.remove("taizoder");
   setTimeout(()=>{
     vidasR--;
     vidas.innerText="Vidas "+vidasR;
@@ -297,21 +286,16 @@ function golpeEnemigo( ){ //Ayuda
     taizoHori.ori="der";
     taizoX=12;
     taizoY=9;
-    if(vidasR>=0){
-      reinicioJ(puntaje,vidasR,nivel);
-    }else{
-      tabla.innerHTML="";
-      tabla.innerText="FIN DEL JUEGO";
-    }
-  },1000);
+    //$(".tierra").remove();
+    reinicioJ(puntaje,vidasR,nivel);
+  },10000);
 }
 
-let salir = document.getElementById("menu");
-  salir.addEventListener("click", ()=>{
-    window.location = "../index.html";
-  });
-
-
+function subenivel(){
+  nivel++;
+  nivel.innerText="Vidas "+nivel;
+  reinicioJ(puntaje,vidasR,nivel);
+}
 
 function tunelEnemigo(num){
  //1 vertical, 0 horizontal
@@ -719,9 +703,9 @@ function controlHori(evento){
 
 
 //Puntajes, nivel y vidas
-var puntaje=0;
-var vidasR=3;
-var nivel=1;
+let puntaje=0;
+let vidasR=3;
+let nivel=1;
 if(vidasR==3 && nivel==1){
   tablero();
   creaTablero();
@@ -729,19 +713,25 @@ if(vidasR==3 && nivel==1){
 }
 function reinicioJ(puntos, taizoV, nivel){
   tabla.innerHTML="";
-  tablero2();
+  console.log(estado);
+  console.log(taizoHori);
+  console.log(taizoX);
+  console.log(taizoY);
   creaTablero();
   mundo.addEventListener("keyup", controlHori);
   mundo.addEventListener("keydown",bomba);
   mundo.addEventListener("keyup",bomba);
   puntos.innerText="Puntaje: "+puntos;
   vidas.innerText="Vidas " +taizoV;
-  rondas.innerText="LEVEL "+nivel;
-  setTimeout(()=>{
+  rondas.innerText="LEVEL"+nivel;
+  elem=setTimeout(()=>{
     compPiedra();
     nivelMod(nivel);
-    pookas.forEach(pooka => movimientoPooka(pooka));
-    console.log("hhhhh");
+    if(pookas.length>0){
+      pookas.forEach(pooka => movimientoPooka(pooka));
+    }else{
+      subenivel();
+    }
   },2000);
 }
 
@@ -751,20 +741,17 @@ function reinicioF(puntos, taizoV, nivel){
   mundo.addEventListener("keyup",bomba);
   puntos.innerText="Puntaje: "+puntos;
   vidas.innerText="Vidas " +taizoV;
-  rondas.innerText="LEVEL "+nivel;
-  setTimeout(()=>{
+  rondas.innerText="LEVEL"+nivel;
+  elem=setTimeout(()=>{
     compPiedra();
     nivelMod(nivel);
     if(pookas.length>0){
       pookas.forEach(pooka => movimientoPooka(pooka));
+    }else{
+      subenivel();
     }
   },2000);
 }
-
-
-
-
-
 
 
 

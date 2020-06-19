@@ -5,13 +5,16 @@ html,body{
 body{
 	width:700px;
 	margin:0 auto;
-	background-image: radial-gradient(circle farthest-side at 500px 2700px, blue, black);
+	background:
+    linear-gradient(217deg, #93CD2B, rgba(255,0,0,0) 70.71%),
+    linear-gradient(127deg, #DCD737, rgba(0,255,0,0) 70.71%),
+    linear-gradient(336deg, #1DBD93, rgba(0,0,255,0) 70.71%);
   font-family: 'Bungee Inline', cursive;
   font-size: 30px;
 }
 h1{
 	text-align:center;
-	color: #FFFFFF;
+	color:black;
   font-family: 'Monofett', cursive;
   margin-top: 0%;
   margin-bottom: 3%;

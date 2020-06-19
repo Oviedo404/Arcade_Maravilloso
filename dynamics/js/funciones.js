@@ -15,6 +15,17 @@ var de;
 var puntos = 0;
 var finJuego = false;
 
+function obtenerCookie(clave) { //Función para obener el valor de una cookie existente. En caso de no existir se devuelve "".
+  var name = clave + "=";
+  var ca = document.cookie.split(';');
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') c = c.substring(1);
+    if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+  }
+  return "";
+}
+
 function Bala(x,y,w){
 	this.x = x;
 	this.y = y;
@@ -248,7 +259,7 @@ window.onload = function(){
 	}
 }
 let header = document.getElementById("titulo");
-var name = "Nombre";
+let name=obtenerCookie("name");
 let usuario = document.getElementById("user");
 let nombre = document.createElement("div");
 nombre.setAttribute("id", "usuario");
@@ -256,13 +267,8 @@ nombre.innerHTML = "<h3 id='nickname'>"+name+"</h3>";
 usuario.appendChild(nombre);
 let reiniciar = document.createElement("div");
     reiniciar.addEventListener("click", ()=>{
-      let tiempo = new Date();
-      tiempo.setTime(tiempo.getTime() - 1);
-
-      //document.cookie = "dificulty=hard; expires=" + tiempo.toGMTString();
-      //document.cookie;
-      window.location.reload();
+      window.location = "../index.html";
     });
 reiniciar.setAttribute("id", "salida");
-reiniciar.innerHTML = "<button id='button'>Reiniciar</button>";
+reiniciar.innerHTML = "<button id='button'>Salir</button>";
 header.appendChild(reiniciar);

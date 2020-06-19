@@ -5,17 +5,87 @@ html,body{
 body{
   align-content: center;
   background:
-  linear-gradient(217deg, black, rgba(255,0,0,0) 70.71%),
-  linear-gradient(127deg, white, rgba(0,255,0,0) 70.71%),
-  linear-gradient(336deg, gray, rgba(0,0,255,0) 70.71%);
+    linear-gradient(217deg, #1DBD93, rgba(255,0,0,0) 70.71%),
+    linear-gradient(127deg, #93CD2B, rgba(0,255,0,0) 70.71%),
+    linear-gradient(336deg, #DCD737, rgba(0,0,255,0) 70.71%);
   background-color: black;
   background-size: 100% 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin: 0px;
   font-family: 'Bungee Inline', cursive;
   font-size: 30px;
+  justify-content: center;
+  margin: 0px;
+}
+
+.botoncitosuwu{
+  background-color:rgba(239, 190, 140, 0.77);
+  border: inset #EFBE8C 3px;
+  border-radius: 1em;
+  color: white;
+  font-family: 'Bungee Inline', cursive;
+  font-size: 30px;
+  height: 17%;
+  margin-top: 3%;
+  outline: none;
+  padding-top: 0%;
+  width: 70%;
+}
+
+#botoncito{
+  background-color: #DDD4A2;
+  border: border: inset #EFBE8C 3px;
+  border-radius: 1em;
+  height: 100%;
+  width: 100%;
+}
+#color{
+  background-color: #DDD4A2;
+  border: border: inset #EFBE8C 3px;
+  border-radius: 1em;
+  height: 100%;
+  width: 100%;
+}
+#cuerpo{
+  align-content: center;
+  color: #EFBE8C;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  justify-content: space-around;
+  margin-top: 7%;
+  width: 100%;
+}
+#iniciar{
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  justify-content: center;
+  position: relative;
+  top: 20%
+}
+#indice{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+#name{
+  background-color: #DDD4A2;
+  border: border: inset #EFBE8C 3px;
+  border-radius: 1em;
+  height: 100%;
+  width: 100%;
+}
+#nombre{
+  font-family: 'Monofett', cursive;
+  font-size: 130px;
+  margin-top: 0%;
+  text-align: center;
+  width: 90%;
+}
+#nombrar{
+  color: #DDD4A2;
 }
 #titulo{
   display: flex;
@@ -23,22 +93,4 @@ body{
   justify-content: center;
   margin-top: 3%;
   width: 100%;
-}
-#nombre{
-  font-family: 'Monofett', cursive;
-  font-size: 130px;
-  text-align: center;
-  width: 90%;
-  margin-top: 0%;
-}
-#cuerpo{
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  justify-content: space-around;
-  height: 100%;
-  width: 100%;
-}
-#iniciar{
-  height: 50%;
 }

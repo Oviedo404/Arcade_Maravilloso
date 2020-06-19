@@ -14,27 +14,17 @@
       <h1 id="nombre">MARVELOUS ARCADE</h1>
     </div>
     <div id="cuerpo">
-      <form id="iniciar" action="index.html" method="post">
+      <div id="iniciar">
        Nombre: <input type="text" name="Nombre" value=""  id= "name" placeholder="Ingresa tu nombre"> <br>
-       Eligue un tema: <br>
-        <input type="radio" name="color" id= "suave"  value="S"> Suave equis de <br>
-        <input type="radio" name="color" id= "fuerte" value="F"> Fuerte Equis de <br>
-        <input type="radio" name="color" id= "otro" value="O"> Otro <br>
-        <input type="submit" value="Enviar">
-        <a href="./templates/buscaminas.html">Buscaminas</a> <br>
-        <a href="./templates/Space.html">Space Invaders</a> <br>
-        <a href="./templates/digdug.html">Dig Dog</a> <br>
-     </form>
-     </div>
-     <script src="../dynamics/js/script.js"></script>
+       Eligue un tema:
+        <select name="tema" id="color">
+          <option selected value=""></option>
+          <option value="M">Marvelous</option>
+          <option value="O">Oscuro</option>
+        </select> <br>
+        <input type="button" name="enviar" value="Enviar" id="botoncito"/><br>
+      </div>
+      <script src="dynamics/js/script.js"></script>
+    </div>
   </body>
 </html>
-
-
-
-<!--<form id="formulario" method="Post">
-
-      <input type="text" id="texto"/>
-      <input type="button" name="enviar" value="Enviar" onclick="recibir();"/><br>
-  <div id="txt"></div>
-</form>-->

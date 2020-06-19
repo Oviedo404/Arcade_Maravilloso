@@ -1,3 +1,15 @@
+//Tal vez si nos hubieran dado esta funcion antes no se me hbaría caído el pelo del estres
+function obtenerCookie(clave) { //Función para obener el valor de una cookie existente. En caso de no existir se devuelve "".
+  var name = clave + "=";
+  var ca = document.cookie.split(';');
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') c = c.substring(1);
+    if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+  }
+  return "";
+}
+
 //Con esta funcion se genera la pagina al perder
 function lostgame(cuerpo, salir, info, tablero, contador){
   cuerpo.removeChild(info);
@@ -6,7 +18,6 @@ function lostgame(cuerpo, salir, info, tablero, contador){
   final.setAttribute("id", "fin");
   cuerpo.appendChild(final);
   final.innerHTML = "<h1 id='end'>End Game</h1><h4 id='punct'>Puntuación: "+contador+"</h4>";
-
   let regresar = document.createElement("div");
   regresar.addEventListener("click", ()=>{
     let tiempo = new Date();
@@ -17,14 +28,14 @@ function lostgame(cuerpo, salir, info, tablero, contador){
     document.cookie;
     document.cookie = "dificulty=hard; expires=" + tiempo.toGMTString();
     document.cookie;
-    window.location = "buscaminas.html";
+    window.location = "../index.html";
   });
   regresar.setAttribute("id", "regreso");
   regresar.innerHTML = "<button id='button'>Regresar</button>";
   final.appendChild(regresar);
 }
-//Con esta funcion se forma la página al ganar
-function winedgame(cuerpo, salir, info, tablero, contador){
+//Con esta funcion se forma la página al perder
+function winedgame(cuerpo, salir, info, tablero, contador, casillas){
   cuerpo.removeChild(info);
   cuerpo.removeChild(tablero);
   let final = document.createElement("div");
@@ -41,7 +52,7 @@ function winedgame(cuerpo, salir, info, tablero, contador){
     document.cookie;
     document.cookie = "dificulty=hard; expires=" + tiempo.toGMTString();
     document.cookie;
-    window.location = "buscaminas.html";
+    window.location = "../index.html";
   });
   regresar.setAttribute("id", "regreso");
   regresar.innerHTML = "<button id='button'>Regresar</button>";
@@ -170,14 +181,6 @@ function comercookies() {
 function buscaminasuwu(tamano, long){
     let cuerpo = document.getElementById("buscaminas");
     let header = document.getElementById("titulo");
-    //Con este div creamos un boton que elimine las cookies
-    let salir = document.createElement("div");
-    salir.addEventListener("click", ()=>{
-      comercookies();
-    });
-    salir.setAttribute("id", "salida");
-    salir.innerHTML = "<button id='button'>Salir</button>";
-    header.appendChild(salir);
     //Aqui se crea es asided para visualizar las instrucciones y la puntuación
     let info = document.createElement("aside");
     info.setAttribute("id", "info");
@@ -196,12 +199,7 @@ function buscaminasuwu(tamano, long){
     let random;
     let random2;
     let bombitas;
-    var lasCookies = document.cookie.split("=");
-    for (let i = 0; i <= lasCookies.length; i++) {
-      if (lasCookies[i]=="dificulty") {
-        var dificultad=lasCookies[i+1];
-      }
-    }
+    var dificultad =obtenerCookie("dificulty");;
     if (dificultad=="easy") {
       bombitas=3;
     }
@@ -229,6 +227,18 @@ function buscaminasuwu(tamano, long){
       casillas[random][random2] = "bomba";
     }
     adyacentes(casillas, tamano);
+    //Con este div creamos un boton que elimine las cookies y regrese al inicio
+    let salir = document.createElement("div");
+    salir.addEventListener("click", ()=>{
+      let tiempo = new Date();
+      tiempo.setTime(tiempo.getTime() + 1000*60*60*24);
+      document.cookie = "casillas="+casillas+"; expires=" + tiempo.toGMTString();
+      document.cookie;
+      window.location = "../index.html";
+    });
+    salir.setAttribute("id", "salida");
+    salir.innerHTML = "<button id='button'>Salir</button>";
+    header.appendChild(salir);
     //ahora creamos las casillas
     for (let a = 0; a < tamano; a++) {
       for (let b = 0; b < tamano; b++) {
@@ -289,7 +299,7 @@ function buscaminasuwu(tamano, long){
               bombitas-=1;
               bombotas=0;
               if (bombitas==0){
-                winedgame(cuerpo, salir, info, tablero, contador);
+                winedgame(cuerpo, salir, info, tablero, contador, casillas);
               }
             }
           }
@@ -298,7 +308,7 @@ function buscaminasuwu(tamano, long){
             cinta=1;
             bombitas+=1;
             if (bombitas==0){
-              winedgame(cuerpo, salir, info, tablero, contador);
+              winedgame(cuerpo, salir, info, tablero, contador, casillas);
             }
           }
           else if (cinta==1 && casillas[id1][id2] != "bomba"){
@@ -306,7 +316,7 @@ function buscaminasuwu(tamano, long){
             cinta=0;
             bombitas-=1;
             if (bombitas==0){
-              winedgame(cuerpo, salir, info, tablero, contador);
+              winedgame(cuerpo, salir, info, tablero, contador, casillas);
             }
           }
           else if (cinta==1 && casillas[id1][id2] == "bomba") {
@@ -316,7 +326,7 @@ function buscaminasuwu(tamano, long){
               bombitas+=1;
               bombotas=1;
               if (bombitas==0){
-                winedgame(cuerpo, salir, info, tablero, contador);
+                winedgame(cuerpo, salir, info, tablero, contador, casillas);
               }
             }
           }
@@ -333,6 +343,7 @@ function dificulty(){
   let salir = document.createElement("div");
   salir.addEventListener("click", ()=>{
     comercookies();
+    window.location = "../index.html";
   });
   salir.setAttribute("id", "salida");
   salir.innerHTML = "<button id='button'>Salir</button>";
@@ -402,24 +413,13 @@ function dificulty(){
 
 //Inicio del programa
 //Recibe el nombre y si hay una cookie de la dificultad genera el tablero, si no, te manda a la seleccion de dificultad
-var lasCookies = document.cookie.split("=");
-for (let i = 0; i <= lasCookies.length; i++) {
-  if (lasCookies[i]=="nombre") {
-    var name=lasCookies[i+1];
-  }
-}
-var name = "Damian";
+let name=obtenerCookie("name");
 let usuario = document.getElementById("user");
 let nombre = document.createElement("div");
 nombre.setAttribute("id", "usaurio");
 nombre.innerHTML = "<h3 id='nickname'>"+name+"</h3>";
 usuario.appendChild(nombre);
-
-for (let i = 0; i <= lasCookies.length; i++) {
-  if (lasCookies[i]=="dificulty") {
-    var dificultad=lasCookies[i+1];
-  }
-}
+let dificultad=obtenerCookie("dificulty");
 if (dificultad=="easy") {
   var tamano = 5;
   var long = 19;
